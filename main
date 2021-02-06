@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+from sklearn import linear_model
+fin=pd.read_csv(r'D:\Temp\Financial.csv')
+fin.head(5)
+oship=pd.read_csv(r'D:\Temp\Ownership.csv')
+oship.head(5)
+perfo=pd.read_csv(r"D:\Temp\Performance.csv")
+perfo.head(5)
+oview=pd.read_csv(r"D:\Temp\Overview.csv")
+oview.head(5)
+fin2=fin
+oship2=oship
+perfo2=perfo
+oview2=oview
+oship.drop(['No.','Ticker','Market Cap','Price','Change','Volume'],axis='columns',inplace=True)
+perfo.drop(['No.','Ticker','Average Volume','Price','Change','Volume'],axis='columns',inplace=True)
+oview.drop(['No.','Ticker','Market Cap','Price','Change','Volume'],axis='columns',inplace=True)
+output=pd.concat([fin,oship,perfo,oview],axis='columns')
+output
+op2 = pd.concat([fin2,oship2,perfo2,oview2], axis=1, join='inner')
+op2.head(1)
+op2.to_csv("D:\Temp\combined.csv")
+#op2.to_csv("combined.csv",index=False)
+#c=pd.read_csv(r"D:\Temp\combined.csv")
+#c.head(1)
+
